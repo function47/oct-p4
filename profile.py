@@ -44,7 +44,7 @@ toolVersion = [#('2022.1'),
 
 pc.defineParameter("nodes","List of nodes",
                    portal.ParameterType.STRING,"",
-                   longDescription="Comma-separated list of nodes (e.g., pc166,pc167).")
+                   longDescription="Comma-separated list of nodes (e.g., pc164,pc165).")
                    
 pc.defineParameter("toolVersion", "Tool Version",
                    portal.ParameterType.STRING,
