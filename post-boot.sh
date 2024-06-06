@@ -67,6 +67,12 @@ install_config_fpga() {
     cp /proj/oct-fpga-p4-PG0/tools/config-fpga /usr/local/bin
 }
 
+install_dpdk() {
+    cp /proj/oct-fpga-p4-PG0/tools/dpdk.sh /opt/.
+    cd /opt/
+    ./dpdk.sh
+}
+
 disable_pcie_fatal_error() {
     echo "Disabling pcie fatal error reporting."
     sudo /proj/oct-fpga-p4-PG0/tools/pcie_disable_fatal.sh 3b:00.0
@@ -87,6 +93,7 @@ install_xrt
 install_xbflash
 verify_install
 install_config_fpga
+install_dpdk
 disable_pcie_fatal_error
 if [ $? == 0 ] ; then
     echo "XRT and shell package installation successful."
