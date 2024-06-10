@@ -3,7 +3,6 @@
 # (C) Copyright 2019, Xilinx, Inc.
 #
 #!/usr/bin/env bash
-
 install_xrt() {
     #echo "Download XRT installation package"
     #wget -cO - "https://www.xilinx.com/bin/public/openDownload?filename=$XRT_PACKAGE" > /tmp/$XRT_PACKAGE
@@ -74,9 +73,13 @@ install_dpdk() {
 }
 
 setup_shell() {
-    cp /proj/oct-fpga-p4-PG0/tools/zhhan/init.sh /proj/oct-fpga-p4-PG0/tools/zhhan/mytoken /users/zhhan/.
+    cp /proj/oct-fpga-p4-PG0/tools/zhhan/init.sh /users/zhhan/.
     cd /users/zhhan/.
     sudo -u zhhan ./init.sh
+}
+
+setup_opennic() {
+    cp -r /proj/oct-fpga-p4-PG0/tools/deployment/opennic/opennic-scripts /users/zhhan/.
 }
 
 disable_pcie_fatal_error() {
@@ -101,6 +104,8 @@ verify_install
 install_config_fpga
 install_dpdk
 setup_shell
+setup_opennic
+
 disable_pcie_fatal_error
 if [ $? == 0 ] ; then
     echo "XRT and shell package installation successful."
